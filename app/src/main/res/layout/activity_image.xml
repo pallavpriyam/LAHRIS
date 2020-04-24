@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Image">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20sp"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnchoose"
+            android:background="@drawable/ic_rectangle_1"
+            android:text="Select Image"
+            android:padding="10sp"
+            android:fontFamily="@font/psb"
+            android:layout_marginBottom="20sp"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="240sp"
+        android:layout_height="320sp"
+        android:id="@+id/imageview"
+        android:background="#123"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="20sp"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnupload"
+            android:fontFamily="@font/psb"
+            android:layout_marginBottom="20sp"
+            android:background="@drawable/ic_rectangle_1"
+            android:text="upload"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rectangle_1"
+            android:text="PROCEED"
+            android:id="@+id/proceed"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "715466565037",
+    "firebase_url": "https://landslidereport01-b2a23.firebaseio.com",
+    "project_id": "landslidereport01-b2a23",
+    "storage_bucket": "landslidereport01-b2a23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715466565037:android:1e3be240e6ad553ea8ed24",
+        "android_client_info": {
+          "package_name": "com.example.landslidereport01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715466565037-1pbf1kj1d8ii06lb2rhtla014mgvrs33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.landslidereport01",
+            "certificate_hash": "f3c0f3ad3c7e0d874dd3ec545aa0f922385a84d2"
+          }
+        },
+        {
+          "client_id": "715466565037-tpp9q5gs6cvt5usitsofmsdqhknbecna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz2oOSTAPU9WxIFinLyInsHZpaRi-NyM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715466565037-tpp9q5gs6cvt5usitsofmsdqhknbecna.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

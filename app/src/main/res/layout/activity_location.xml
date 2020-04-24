@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#1D2323"
+    android:orientation="vertical"
+    tools:context=".Location">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50sp"
+            android:id="@+id/back"
+            android:background="@drawable/ic_back_unclicked" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loctxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:fontFamily="@font/psb"
+        android:text="FIND ACCURATE LOCATION"
+        android:textColor="#FFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/locbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/psb"
+        android:textSize="15sp"
+        android:background="@drawable/ic_rectangle_1"
+        android:text="Find my location" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/ic_rectangle_1"
+        android:text="Submit"
+        android:textSize="15sp"
+        android:fontFamily="@font/psb"
+        android:id="@+id/subbtn"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/psb"
+        android:text="Locality or nearby place:-"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:id="@+id/add"
+        android:text="NA"
+        android:gravity="center_horizontal" />
+
+</LinearLayout>
