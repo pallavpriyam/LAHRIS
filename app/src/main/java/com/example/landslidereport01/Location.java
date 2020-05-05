@@ -47,9 +47,6 @@ public class Location extends AppCompatActivity implements LocationListener {
     static String str2;
     DatabaseReference databaseReference;
     Button next;
-    working wor;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,8 +153,6 @@ public class Location extends AppCompatActivity implements LocationListener {
 
     @Override
     public void onLocationChanged(android.location.Location location) {
-
-        wor=new working();
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
