@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="#1D2323"
+    android:background="#ddd"
     android:paddingTop="40dp"
     android:orientation="vertical"
     tools:context=".markerdetail">
@@ -27,12 +27,6 @@
                 android:id="@+id/image"
                 />
         </LinearLayout>
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_back_unclicked"
-        android:id="@+id/btn"
-        />
 
     </RelativeLayout>
     <ScrollView

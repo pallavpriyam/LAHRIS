@@ -22,15 +22,9 @@ public class transport extends AppCompatActivity {
         
         railways = findViewById(R.id.railways);
         roadways = findViewById(R.id.roadways);
-        back=findViewById(R.id.back);
         next=findViewById(R.id.submit_button);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(transport.this,movement.class));
-            }
-        });
+
 
         railways.setOnClickListener(new View.OnClickListener() {
             @Override

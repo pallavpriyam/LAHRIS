@@ -1,10 +1,8 @@
 package com.example.landslidereport01;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,17 +43,8 @@ public class markerdetail extends AppCompatActivity {
         move=findViewById(R.id.movement);
         trans=findViewById(R.id.transport);
         land=findViewById(R.id.area);
-        btn = findViewById(R.id.btn);
-
         imageView = findViewById(R.id.image);
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(markerdetail.this,MapsActivityHome.class));
-            }
-        });
 
         String string = getIntent().getStringExtra("abc");
 

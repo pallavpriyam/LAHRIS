@@ -23,15 +23,7 @@ public class movement extends AppCompatActivity {
 
         topple = findViewById(R.id.topple);
         fall = findViewById(R.id.fall);
-        back=findViewById(R.id.back);
         next=findViewById(R.id.submit_button);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(movement.this,type_of.class));
-            }
-        });
 
         topple.setOnClickListener(new View.OnClickListener() {
             @Override

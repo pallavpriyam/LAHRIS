@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.database.DatabaseReference;
 
 public class Parameters extends AppCompatActivity {
 
@@ -24,15 +21,9 @@ public class Parameters extends AppCompatActivity {
         move=findViewById(R.id.movement);
         trans=findViewById(R.id.transport);
         area=findViewById(R.id.land);
-        back=findViewById(R.id.back);
         next=findViewById(R.id.submit_button);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Parameters.this,land.class));
-            }
-        });
+
 
 
         type.setText(type_of.getType());

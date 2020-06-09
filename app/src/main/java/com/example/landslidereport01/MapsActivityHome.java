@@ -9,7 +9,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -52,7 +51,7 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_home);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -62,12 +61,12 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
         if (ContextCompat.checkSelfPermission(MapsActivityHome.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED)
-            ActivityCompat.requestPermissions(MapsActivityHome.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(MapsActivityHome.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         if (ContextCompat.checkSelfPermission(MapsActivityHome.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED)
-            ActivityCompat.requestPermissions(MapsActivityHome.this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(MapsActivityHome.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
 
-        Toast.makeText(MapsActivityHome.this,"Please Wait...",Toast.LENGTH_LONG).show();
+        Toast.makeText(MapsActivityHome.this, "Please Wait...", Toast.LENGTH_LONG).show();
 
         reff = FirebaseDatabase.getInstance().getReference();
         reff.addValueEventListener(new ValueEventListener() {
@@ -85,16 +84,6 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
             }
         });
 
-        addbtn = findViewById(R.id.addbtn);
-        addbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(MapsActivityHome.this,MainActivity.class));
-
-            }
-        });
-
 
     }
 
@@ -105,9 +94,11 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
         displayLocationSettingsRequest();
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
         mMap.setMyLocationEnabled(true);
         mMap.setPadding(0,144,0,0);
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -174,7 +165,7 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
     public void onLocationChanged(Location location) {
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 20);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 18);
         mMap.animateCamera(cameraUpdate);
         locationManager.removeUpdates(MapsActivityHome.this);
 

@@ -4,24 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D2323"
+    android:background="#ddd"
     android:gravity="center"
     android:orientation="vertical"
     android:scrollbars="vertical"
     tools:context=".Parameters">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp">
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50sp"
-            android:id="@+id/back"
-            android:background="@drawable/ic_back_unclicked" />
-
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"

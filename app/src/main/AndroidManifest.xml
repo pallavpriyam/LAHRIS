@@ -22,12 +22,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Home">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".questions">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".land" />
         <activity android:name=".transport" />
@@ -49,12 +50,10 @@
 
         <activity
             android:name=".MapsActivityHome"
-            android:label="@string/title_activity_maps_home">
-        </activity>
+            android:label="@string/title_activity_maps_home" />
         <activity android:name=".markerdetail" />
         <activity android:name=".Image" />
         <activity android:name=".Location" />
-        <activity android:name=".progressbar" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".MainActivity" />
     </application>
