@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddd"
+    android:orientation="vertical"
+    tools:context=".questions">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:orientation="vertical"
+       android:gravity="center"
+       android:background="#ef5350"
+       android:padding="16dp"
+      >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="3"
+          android:fontFamily="@font/psb"
+          android:text="LAHRIS"
+          android:id="@+id/text"
+          android:autoSizeTextType="uniform"
+          android:textColor="#ddd"
+          android:gravity="center_horizontal" />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="LANDSLIDE  HAZARD  AND  RISK  INFORMATION  SYSTEM"
+          android:textSize="12sp"
+          android:textColor="#000"
+          android:background="#ddd"
+          android:fontFamily="@font/psr"
+          android:paddingLeft="8dp"
+          android:paddingRight="8dp"
+          />
+
+
+   </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="3"
+       android:orientation="vertical"
+       android:gravity="center"
+      >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:paddingLeft="24dp"
+          android:paddingRight="24dp"
+          android:orientation="horizontal"
+         >
+
+         <androidx.cardview.widget.CardView
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             app:cardElevation="4dp"
+             android:id="@+id/landslides"
+             android:clickable="true"
+             android:foreground="?android:attr/selectableItemBackground"
+             android:layout_margin="8dp"
+             >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+               <ImageView
+                   android:layout_width="70dp"
+                   android:layout_height="70dp"
+                   android:layout_marginBottom="24dp"
+                   android:src="@drawable/maps_icon"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="LANDSLIDES"
+                   android:fontFamily="@font/psr"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   />
+
+            </LinearLayout>
+
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             app:cardElevation="4dp"
+             android:clickable="true"
+             android:id="@+id/add"
+             android:foreground="?android:attr/selectableItemBackground"
+             android:layout_margin="8dp"
+             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+               <ImageView
+                   android:layout_width="60dp"
+                   android:layout_height="60dp"
+                   android:layout_marginBottom="24dp"
+                   android:src="@drawable/add"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="ADD CASE"
+                   android:fontFamily="@font/psr"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   />
+
+            </LinearLayout>
+
+         </androidx.cardview.widget.CardView>
+
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:paddingRight="24dp"
+          android:paddingLeft="24dp"
+          android:orientation="horizontal"
+          >
+
+         <androidx.cardview.widget.CardView
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             app:cardElevation="4dp"
+             android:clickable="true"
+             android:id="@+id/web"
+             android:foreground="?android:attr/selectableItemBackground"
+             android:layout_margin="8dp"
+             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+               <ImageView
+                   android:layout_width="60dp"
+                   android:layout_height="60dp"
+                   android:layout_marginBottom="24dp"
+                   android:src="@drawable/web"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="WEBSITE"
+                   android:fontFamily="@font/psr"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   />
+
+            </LinearLayout>
+
+         </androidx.cardview.widget.CardView>
+
+         <androidx.cardview.widget.CardView
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             app:cardElevation="4dp"
+             android:clickable="true"
+             android:id="@+id/team"
+             android:foreground="?android:attr/selectableItemBackground"
+             android:layout_margin="8dp"
+             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+               <ImageView
+                   android:layout_width="60dp"
+                   android:layout_height="60dp"
+                   android:layout_marginBottom="24dp"
+                   android:src="@drawable/team"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TEAM"
+                   android:fontFamily="@font/psr"
+                   android:textSize="16sp"
+                   android:textColor="#000"
+                   />
+
+            </LinearLayout>
+
+         </androidx.cardview.widget.CardView>
+
+
+      </LinearLayout>
+
+
+   </LinearLayout>
+
+</LinearLayout>

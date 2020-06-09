@@ -5,22 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#1D2323"
+    android:background="#ddd"
     android:orientation="vertical"
     tools:context=".Location">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp">
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50sp"
-            android:id="@+id/back"
-            android:background="@drawable/ic_back_unclicked" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/loctxt"
@@ -29,7 +17,7 @@
         android:layout_marginBottom="20sp"
         android:fontFamily="@font/psb"
         android:text="FIND ACCURATE LOCATION"
-        android:textColor="#FFF"
+        android:textColor="#000"
         android:textSize="20sp" />
 
     <Button

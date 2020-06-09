@@ -56,14 +56,13 @@ public class Location extends AppCompatActivity implements LocationListener {
         btn2 = findViewById(R.id.subbtn);
         btn1 = findViewById(R.id.locbtn);
         tv=findViewById(R.id.loctxt);
-        next=findViewById(R.id.back);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        next=findViewById(R.id.subbtn);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Location.this,MainActivity.class));
+                startActivity(new Intent(Location.this,type_of.class));
             }
         });
 

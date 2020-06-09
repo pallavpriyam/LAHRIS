@@ -22,15 +22,8 @@ public class type_of extends AppCompatActivity {
 
         debris = findViewById(R.id.debris);
         rocky = findViewById(R.id.rocky);
-        back=findViewById(R.id.back);
         next=findViewById(R.id.submit_button);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(type_of.this,Location.class));
-            }
-        });
 
         debris.setOnClickListener(new View.OnClickListener() {
             @Override

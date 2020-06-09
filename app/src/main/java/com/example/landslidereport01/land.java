@@ -22,15 +22,9 @@ public class land extends AppCompatActivity {
         
         cultivated = findViewById(R.id.cultivated);
         barren = findViewById(R.id.barren);
-        back=findViewById(R.id.back);
         next=findViewById(R.id.submit_button);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(land.this,transport.class));
-            }
-        });
+
 
         cultivated.setOnClickListener(new View.OnClickListener() {
             @Override
