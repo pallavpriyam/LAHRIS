@@ -32,24 +32,49 @@
             android:orientation="horizontal"
             android:paddingTop="40dp"
             android:paddingLeft="40dp"
+            android:layout_marginBottom="10dp"
             android:paddingRight="40dp"
             >
 
-            <ImageView
-                android:id="@+id/topple"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/ic_topple" />
+                >
+                <ImageView
+                    android:id="@+id/topple"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/topple" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/debtick"
+                    />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_weight="1"
+                >
+                <ImageView
+                    android:id="@+id/fall"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/fall" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/rocktick"
+                    />
+            </FrameLayout>
 
-            <ImageView
-                android:id="@+id/fall"
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/ic_fall" />
 
         </LinearLayout>
         <LinearLayout

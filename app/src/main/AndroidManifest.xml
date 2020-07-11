@@ -23,13 +23,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".questions">
+        <activity android:name=".team"></activity>
+        <activity android:name=".Review" />
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".questions" />
         <activity android:name=".land" />
         <activity android:name=".transport" />
         <activity android:name=".movement" />

@@ -101,7 +101,6 @@ public class Image extends AppCompatActivity {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Choose your profile picture");
 
         builder.setItems(options, new DialogInterface.OnClickListener() {
 
@@ -167,8 +166,6 @@ public class Image extends AppCompatActivity {
     public void upload(byte[] bitmap) {
 
         UploadTask uploadTask=storageReference.child(Location.getName()).putBytes(bitmap);
-        databaseReference.child(Location.getName()).setValue(wor);
-
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -177,6 +174,7 @@ public class Image extends AppCompatActivity {
                 btnpro.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        databaseReference.child(Location.getName()).setValue(wor);
                         startActivity(new Intent(Image.this,MapsActivity.class));
                     }
                 });
@@ -185,7 +183,6 @@ public class Image extends AppCompatActivity {
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(Image.this,"UPLOADING....",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

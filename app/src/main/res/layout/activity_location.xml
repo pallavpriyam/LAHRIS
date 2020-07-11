@@ -28,7 +28,7 @@
         android:fontFamily="@font/psb"
         android:textSize="15sp"
         android:background="@drawable/ic_rectangle_1"
-        android:text="Find my location" />
+        android:text="Find" />
 
     <Button
         android:layout_width="wrap_content"

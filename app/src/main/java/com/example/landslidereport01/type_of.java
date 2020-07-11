@@ -14,6 +14,7 @@ public class type_of extends AppCompatActivity {
     Button back,next;
     int a=0,b=0;
     static String str="DON'T KNOW";
+    View view1,view2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,49 +24,47 @@ public class type_of extends AppCompatActivity {
         debris = findViewById(R.id.debris);
         rocky = findViewById(R.id.rocky);
         next=findViewById(R.id.submit_button);
+        view1=findViewById(R.id.debtick);
+        view2=findViewById(R.id.rocktick);
 
+        view1.setVisibility(View.INVISIBLE);
+        view2.setVisibility(View.INVISIBLE);
 
         debris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rocky.setImageResource(R.drawable.r);
-                b = 0;
-                if(a%2==0)
-                {
-                    debris.setImageResource(R.drawable.dc);
-                    a++;
-                    str="DEBRIS";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    debris.setImageResource(R.drawable.d);
-                    a =0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view1.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.INVISIBLE);
+                str="DEBRIS";
+                next.setText("PROCEED");
+            }
+        });
+
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view1.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
             }
         });
 
         rocky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                debris.setImageResource(R.drawable.d);
-                a=0;
-                if(b%2==0)
-                {
-                    rocky.setImageResource(R.drawable.rc);
-                    b++;
-                    str="ROCKY";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    rocky.setImageResource(R.drawable.r);
-                    b = 0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view2.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.INVISIBLE);
+                str="ROCKY";
+                next.setText("PROCEED");
+            }
+        });
+
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view2.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
             }
         });
 
@@ -73,6 +72,7 @@ public class type_of extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(type_of.this,movement.class));
+                overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
             }
         });
     }

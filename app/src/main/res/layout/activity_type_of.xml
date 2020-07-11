@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".type_of"
+    tools:context=".transport"
     android:background="#ddd"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +19,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="What type of landslide was it ?"
-            android:fontFamily="@font/psb"
+            android:textAlignment="center"
             android:textColor="#000"
+            android:text="Type of landslide was ?"
+            android:fontFamily="@font/psb"
             android:textSize="20sp"
             android:gravity="center_horizontal" />
 
@@ -29,26 +31,48 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="40dp"
+            android:layout_marginBottom="10dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             >
-
-            <ImageView
-                android:id="@+id/debris"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/d" />
-
-            <ImageView
-                android:id="@+id/rocky"
+                >
+                <ImageView
+                    android:id="@+id/debris"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/debris" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/debtick"
+                    />
+            </FrameLayout>
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="137dp"
-                android:layout_marginLeft="20dp"
+                android:layout_height="130dp"
                 android:layout_weight="1"
-                android:background="@drawable/r" />
-
+                >
+                <ImageView
+                    android:id="@+id/rocky"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/rocky" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/rocktick"
+                    />
+            </FrameLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +86,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:textColor="#000"
-                android:textAlignment="center"
                 android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
                 android:text="DEBRIS"
@@ -72,7 +95,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:textColor="#000"
-                android:textAlignment="center"
                 android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
                 android:text="ROCKY"
@@ -85,9 +107,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:paddingRight="40dp"
-        >
-
+        android:paddingEnd="40dp"
+        android:paddingRight="40dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,5 +116,6 @@
             android:id="@+id/submit_button"
             />
     </LinearLayout>
+
 
 </LinearLayout>
