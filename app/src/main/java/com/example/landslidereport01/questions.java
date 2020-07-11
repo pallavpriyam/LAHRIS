@@ -57,7 +57,7 @@ public class questions extends AppCompatActivity {
         c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://lahrisheroku.herokuapp.com/direction/"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://lahrisheroku.herokuapp.com/"); // missing 'http://' will cause crashed
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
