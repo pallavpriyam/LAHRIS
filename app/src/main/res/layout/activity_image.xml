@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnchoose"
+            android:textColor="#fff"
             android:background="@drawable/ic_rectangle_1"
             android:text="Select Image"
             android:padding="10sp"
@@ -49,6 +50,7 @@
             android:id="@+id/btnupload"
             android:fontFamily="@font/psb"
             android:layout_marginBottom="20sp"
+            android:textColor="#fff"
             android:background="@drawable/ic_rectangle_1"
             android:text="upload"
             />
@@ -56,6 +58,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#fff"
             android:background="@drawable/ic_rectangle_1"
             android:text="PROCEED"
             android:id="@+id/proceed"

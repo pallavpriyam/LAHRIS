@@ -50,7 +50,7 @@ public class markerdetail extends AppCompatActivity {
 
         firebaseStorage = FirebaseStorage.getInstance();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child(string);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("CASES").child(string);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

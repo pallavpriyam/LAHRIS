@@ -27,20 +27,7 @@
           android:id="@+id/text"
           android:autoSizeTextType="uniform"
           android:textColor="#ddd"
-          android:gravity="center_horizontal" />
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="0dp"
-          android:layout_weight="1"
-          android:gravity="center"
-          android:text="LANDSLIDE  HAZARD  AND  RISK  INFORMATION  SYSTEM"
-          android:textSize="12sp"
-          android:textColor="#000"
-          android:background="#ddd"
-          android:fontFamily="@font/psr"
-          android:paddingLeft="8dp"
-          android:paddingRight="8dp"
-          />
+          android:gravity="center" />
 
 
    </LinearLayout>

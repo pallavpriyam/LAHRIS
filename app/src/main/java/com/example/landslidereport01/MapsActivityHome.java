@@ -71,9 +71,7 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.getKey().equals("LAHRIS_REVIEW"))
-                        continue;
+                for (DataSnapshot ds : dataSnapshot.child("CASES").getChildren()) {
                     latchk = ds.child("latitude").getValue().toString();
                     lngchk = ds.child("longitude").getValue().toString();
                     mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(latchk), Double.parseDouble(lngchk))).title(ds.child("name").getValue().toString()));

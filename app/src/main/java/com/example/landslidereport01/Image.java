@@ -37,15 +37,12 @@ public class Image extends AppCompatActivity {
 
     Button btnch,btnup,btnpro;
     ImageView imageView;
-
     StorageReference storageReference;
     DatabaseReference databaseReference;
-
 
     byte[] biti;
 
     working wor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +127,18 @@ public class Image extends AppCompatActivity {
             switch (requestCode) {
                 case 0:
                     if (resultCode == RESULT_OK && data != null) {
+
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
-                        imageView.setImageBitmap(selectedImage);
+
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        selectedImage.compress(Bitmap.CompressFormat.WEBP, 100, stream);
+
                         biti = stream.toByteArray();
+
+                        Bitmap bb = BitmapFactory.decodeByteArray(biti,0,biti.length);
+
+                        imageView.setImageBitmap(bb);
+
                     }
 
                     break;
@@ -148,13 +152,17 @@ public class Image extends AppCompatActivity {
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
+
                         Bitmap bitmap = BitmapFactory.decodeStream(is);
 
                         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.WEBP,0,byteArrayOutputStream);
+
                         byte[] byteArray = byteArrayOutputStream.toByteArray();
-                        Bitmap bb = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+
                         biti = byteArray;
+
+                        Bitmap bb = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
                         imageView.setImageBitmap(bb);
                     }
                     break;
@@ -174,7 +182,7 @@ public class Image extends AppCompatActivity {
                 btnpro.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        databaseReference.child(Location.getName()).setValue(wor);
+                        databaseReference.child("CASES").child(Location.getName()).setValue(wor);
                         startActivity(new Intent(Image.this,MapsActivity.class));
                     }
                 });

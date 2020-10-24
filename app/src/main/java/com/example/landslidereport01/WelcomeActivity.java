@@ -25,12 +25,21 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip;
     private Button btnNext;
     private MyPagerAdapter pagerAdapter;
+    private PrefManager prefManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        setStatusBarTransparent();
+        if (!isFirstTimeStartApp()) {
+            startMainActivity();
+            finish();
+        }
+
+        //setStatusBarTransparent();
+
         setContentView(R.layout.activity_welcome);
 
         viewPager=(ViewPager)findViewById(R.id.view_pager);
@@ -87,6 +96,17 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         setDotStatus(0);
 
+    }
+
+    private void launchHomeScreen() {
+        prefManager.setFirstTimeLaunch(false);
+        startActivity(new Intent(WelcomeActivity.this, questions.class));
+        finish();
+    }
+
+    private boolean isFirstTimeStartApp() {
+        SharedPreferences ref = getApplicationContext().getSharedPreferences("IndroSliderApp", Context.MODE_PRIVATE);
+        return ref.getBoolean("Flag", true);
     }
 
     private void setFirstTimeStartStatus(boolean stt){
