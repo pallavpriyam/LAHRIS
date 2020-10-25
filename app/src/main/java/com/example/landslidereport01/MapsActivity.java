@@ -18,8 +18,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     LatLng latLng;
     Button btn;
 
@@ -30,24 +28,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        Toast.makeText(MapsActivity.this,"Please Wait...",Toast.LENGTH_LONG).show();
+        Toast.makeText(MapsActivity.this,"Landslide Reported. Please Wait...",Toast.LENGTH_LONG).show();
         btn=findViewById(R.id.returnbtn);
         btn.setEnabled(false);
-
 
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         MarkerOptions markerOptions=new MarkerOptions()
                 .position(new LatLng(Location.getLat(),Location.getLon()))
                 .title(Location.getName());
         latLng = new LatLng(Location.getLat(),Location.getLon());
-        mMap.addMarker(markerOptions);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Location.getLat(),Location.getLon()),18));
+        googleMap.addMarker(markerOptions);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Location.getLat(),Location.getLon()),18));
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

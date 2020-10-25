@@ -18,24 +18,28 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".questions">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".route" />
+        <activity android:name=".team" />
+        <activity android:name=".Review" />
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".questions" />
         <activity android:name=".land" />
         <activity android:name=".transport" />
         <activity android:name=".movement" />
         <activity android:name=".type_of" />
         <activity android:name=".Parameters" />
-        <activity android:name=".Splash" />
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -47,6 +51,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.here.sdk.access_key_id"
+            android:value="56JyqV2epHTI_x9mNsOmVw" />
+        <meta-data
+            android:name="com.here.sdk.access_key_secret"
+            android:value="bpzQnCVrlhZMGAGowJSn4cMsipvQRCzWrE_in2nUT1PVRhRrLL6IycFuJfiILSkKiV_BYu6ZIZcg_wrDMhD1qQ" />
 
         <activity
             android:name=".MapsActivityHome"

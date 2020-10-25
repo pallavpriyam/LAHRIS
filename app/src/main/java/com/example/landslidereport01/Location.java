@@ -1,18 +1,14 @@
 package com.example.landslidereport01;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,15 +17,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,31 +40,56 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class Location extends AppCompatActivity implements LocationListener {
+public class Location extends AppCompatActivity {
 
-    Button btn1,btn2;
+    Button btn1, btn2;
     TextView tv;
-    LocationManager locman;
     static Double latitude, longitude;
     static String str2;
     DatabaseReference databaseReference;
-    Button next;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    LocationRequest locationRequest;
+    LocationCallback locationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            if (locationResult != null) {
+                for (final android.location.Location location : locationResult.getLocations()) {
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+                            proceed(latitude,longitude);
+                        }
+                    }, 500);
+                }
+            }
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+        rp();
+
         btn2 = findViewById(R.id.subbtn);
         btn1 = findViewById(R.id.locbtn);
-        tv=findViewById(R.id.loctxt);
+        tv = findViewById(R.id.loctxt);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        next=findViewById(R.id.subbtn);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        locationRequest = LocationRequest.create().setInterval(5).setFastestInterval(5).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        next.setOnClickListener(new View.OnClickListener() {
+
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Location.this,type_of.class));
+                startActivity(new Intent(Location.this, type_of.class));
             }
         });
 
@@ -71,14 +98,13 @@ public class Location extends AppCompatActivity implements LocationListener {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checknet()) {
+                if (ContextCompat.checkSelfPermission(Location.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        || ContextCompat.checkSelfPermission(Location.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     displayLocationSettingsRequest();
                     update();
                     tv.setText("FINDING LOCATION...");
-                }
-                else
-                {
-                    AlertDialog.Builder ad=new AlertDialog.Builder(Location.this);
+                } else {
+                    AlertDialog.Builder ad = new AlertDialog.Builder(Location.this);
                     ad.setTitle("IMPORTANT");
                     ad.setMessage("Please turn on your internet connection !!");
                     ad.create().show();
@@ -86,12 +112,6 @@ public class Location extends AppCompatActivity implements LocationListener {
             }
         });
 
-    }
-
-    private boolean checknet() {
-
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED || cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;
     }
 
     private void displayLocationSettingsRequest() {
@@ -120,7 +140,7 @@ public class Location extends AppCompatActivity implements LocationListener {
                                 ResolvableApiException resolvableApiException =
                                         (ResolvableApiException) ex;
                                 resolvableApiException
-                                        .startResolutionForResult(Location.this,1);
+                                        .startResolutionForResult(Location.this, 1);
                             } catch (IntentSender.SendIntentException e) {
 
                             }
@@ -135,13 +155,35 @@ public class Location extends AppCompatActivity implements LocationListener {
     }
 
     private void update() {
-        locman = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(Location.this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Location.this,Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            rp();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(new OnSuccessListener<android.location.Location>() {
+                        @Override
+                        public void onSuccess(android.location.Location location) {
+                            if (location.getAccuracy() > 50) {
+                                if (ActivityCompat.checkSelfPermission(Location.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                                        && ActivityCompat.checkSelfPermission(Location.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+                                {
+                                    return;
+                                }
+                                fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+                            }
+                            else {
+                                latitude = location.getLatitude();
+                                longitude = location.getLongitude();
+                                proceed(latitude,longitude);
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
         }
-        locman.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5, 5, Location.this);
     }
 
     private void rp() {
@@ -150,22 +192,10 @@ public class Location extends AppCompatActivity implements LocationListener {
         ActivityCompat.requestPermissions(Location.this, new String[]{Manifest.permission.INTERNET}, 1);
     }
 
-    @Override
-    public void onLocationChanged(android.location.Location location) {
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                locman.removeUpdates(Location.this);
-                btn2.setEnabled(true);
-                tv.setText("NOW CLICK SUBMIT");
-
-            }
-        }, 500);
-
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+    public void proceed(Double lat, Double lon)
+    {
+        btn2.setEnabled(true);
+        tv.setText("NOW CLICK SUBMIT");
 
         geogeo();
 
@@ -192,7 +222,6 @@ public class Location extends AppCompatActivity implements LocationListener {
             }
         });
 
-
     }
 
     public void geogeo() {
@@ -209,21 +238,6 @@ public class Location extends AppCompatActivity implements LocationListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
 
     }
 

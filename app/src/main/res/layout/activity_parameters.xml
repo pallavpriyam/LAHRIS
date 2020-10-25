@@ -10,6 +10,14 @@
     android:scrollbars="vertical"
     tools:context=".Parameters">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Submissions"
+        android:paddingBottom="40dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/osb"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,9 +28,67 @@
         android:stretchColumns="1">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Name:"
+                android:textAlignment="center"
+                android:fontFamily="@font/psb"
+                android:textSize="20sp"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/name"
+                android:fontFamily="@font/psr"
+                android:layout_height="wrap_content"
+                android:text="NOT SELECTED"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time of reporting:"
+                android:textAlignment="center"
+                android:fontFamily="@font/psb"
+                android:textSize="20sp"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/time"
+                android:fontFamily="@font/psr"
+                android:layout_height="wrap_content"
+                android:text="NOT SELECTED"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         >
 
         <TextView
@@ -34,32 +100,15 @@
             android:textSize="20sp"
             android:gravity="center_horizontal" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="20dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:paddingBottom="40dp"
-            >
-
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
                  android:id="@+id/type"
-                android:layout_weight="1"
-                android:textAlignment="center"
                 android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
                 android:text="NOT SELECTED"
-                android:gravity="center_horizontal" />
-        </LinearLayout>
+                />
 
     </LinearLayout>
 
@@ -67,43 +116,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:text="What type of movement was it ?"
+                android:textAlignment="center"
                 android:fontFamily="@font/psb"
                 android:textSize="20sp"
                 android:gravity="center_horizontal" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/movement"
+                android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="20dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:text="NOT SELECTED"
                 />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:paddingBottom="40dp"
-                >
-
-                <TextView
-                    android:layout_width="0dp"
-                     android:id="@+id/movement"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/psr"
-                    android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    android:text="NOT SELECTED"
-                    android:gravity="center_horizontal" />
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -111,46 +144,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Transport affected was ?"
                 android:textAlignment="center"
-
-                android:text="Transportation affected was ?"
                 android:fontFamily="@font/psb"
                 android:textSize="20sp"
                 android:gravity="center_horizontal" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/transport"
+                android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="20dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:text="NOT SELECTED"
                 />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:paddingBottom="40dp"
-                >
-
-                <TextView
-                    android:layout_width="0dp"
-                     
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:id="@+id/transport"
-                    android:fontFamily="@font/psr"
-                    android:layout_height="wrap_content"
-                    android:text="NOT SELECTED"
-                    />
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -158,48 +172,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Type of land affected ?"
+                android:text="Land affected was ?"
                 android:textAlignment="center"
-
                 android:fontFamily="@font/psb"
                 android:textSize="20sp"
-                />
+                android:gravity="center_horizontal" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:id="@+id/land"
+                android:fontFamily="@font/psr"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="20dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
+                android:text="NOT SELECTED"
                 />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:paddingBottom="40dp"
-                >
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:id="@+id/land"
-                    android:gravity="center_horizontal"
-                    android:fontFamily="@font/psr"
-                    android:layout_height="wrap_content"
-                    android:text="NOT SELECTED"
-                    />
-            </LinearLayout>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -209,6 +205,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SUBMIT"
+                android:textColor="#fff"
+                android:background="@drawable/ic_rectangle_1"
                 android:id="@+id/submit_button" />
         </LinearLayout>
 

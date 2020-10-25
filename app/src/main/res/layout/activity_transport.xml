@@ -31,25 +31,49 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="40dp"
+            android:layout_marginBottom="10dp"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             >
 
-            <ImageView
-                android:id="@+id/railways"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/ic_railway" />
-
-            <ImageView
-                android:id="@+id/roadways"
+                >
+                <ImageView
+                    android:id="@+id/railways"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/railway" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/debtick"
+                    />
+            </FrameLayout>
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="130dp"
-                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/ic_roadways" />
+                >
+                <ImageView
+                    android:id="@+id/roadways"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/roadways" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/tick"
+                    android:id="@+id/rocktick"
+                    />
+            </FrameLayout>
 
         </LinearLayout>
         <LinearLayout
@@ -91,8 +115,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DON'T  KNOW"
+            android:textColor="#fff"
+            android:background="@drawable/ic_rectangle_1"
             android:id="@+id/submit_button"
             />
     </LinearLayout>
+
 
 </LinearLayout>

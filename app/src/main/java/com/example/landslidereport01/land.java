@@ -14,6 +14,7 @@ public class land extends AppCompatActivity {
     Button back,next;
     int a=0,b=0;
     static String str="DON'T KNOW";
+    View view1,view2;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,53 +24,49 @@ public class land extends AppCompatActivity {
         cultivated = findViewById(R.id.cultivated);
         barren = findViewById(R.id.barren);
         next=findViewById(R.id.submit_button);
+        view1=findViewById(R.id.debtick);
+        view2=findViewById(R.id.rocktick);
 
-
+        view1.setVisibility(View.INVISIBLE);
+        view2.setVisibility(View.INVISIBLE);
 
         cultivated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                barren.setImageResource(R.drawable.ic_barren_land);
-                b = 0;
-                if(a%2==0)
-                {
-                    cultivated.setImageResource(R.drawable.ic_cultivated_clicked);
-                    a++;
-                    str="CULTIVATED";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    cultivated.setImageResource(R.drawable.ic_cultivated);
-                    a =0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view1.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.INVISIBLE);
+                str="CULTIVATED";
+                next.setText("PROCEED");
+            }
+        });
+
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view1.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
             }
         });
 
         barren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cultivated.setImageResource(R.drawable.ic_cultivated);
-                a=0;
-                if(b%2==0)
-                {
-                    barren.setImageResource(R.drawable.ic_barren_land_clicked);
-                    b++;
-                    str="BARREN";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    barren.setImageResource(R.drawable.ic_barren_land);
-                    b = 0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view2.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.INVISIBLE);
+                str="BARREN";
+                next.setText("PROCEED");
             }
         });
 
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view2.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
+            }
+        });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

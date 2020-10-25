@@ -14,6 +14,7 @@ public class transport extends AppCompatActivity {
     Button back,next;
     int a=0,b=0;
     static String str="DON'T KNOW";
+    View view1,view2;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,50 +24,47 @@ public class transport extends AppCompatActivity {
         railways = findViewById(R.id.railways);
         roadways = findViewById(R.id.roadways);
         next=findViewById(R.id.submit_button);
+        view1=findViewById(R.id.debtick);
+        view2=findViewById(R.id.rocktick);
 
-
+        view1.setVisibility(View.INVISIBLE);
+        view2.setVisibility(View.INVISIBLE);
 
         railways.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                roadways.setImageResource(R.drawable.ic_roadways);
-                b = 0;
-                if(a%2==0)
-                {
-                    railways.setImageResource(R.drawable.ic_railway_clicked);
-                    a++;
-                    str="RAILWAYS";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    railways.setImageResource(R.drawable.ic_railway);
-                    a =0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view1.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.INVISIBLE);
+                str="RAILWAYS";
+                next.setText("PROCEED");
+            }
+        });
+
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view1.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
             }
         });
 
         roadways.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                railways.setImageResource(R.drawable.ic_railway);
-                a=0;
-                if(b%2==0)
-                {
-                    roadways.setImageResource(R.drawable.ic_roadways_clicked);
-                    b++;
-                    str="ROADWAYS";
-                    next.setText("SUBMIT");
-                }
-                else
-                {
-                    roadways.setImageResource(R.drawable.ic_roadways);
-                    b = 0;
-                    str="DON'T KNOW";
-                    next.setText("DON'T  KNOW");
-                }
+                view2.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.INVISIBLE);
+                str="ROADWAYS";
+                next.setText("PROCEED");
+            }
+        });
+
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                view2.setVisibility(View.INVISIBLE);
+                str="DON'T KNOW";
+                next.setText("DON'T KNOW");
             }
         });
 
@@ -74,6 +72,8 @@ public class transport extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(transport.this,land.class));
+                overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+
             }
         });
 

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">LandslideReport01</string>
+    <string name="app_name">LAHRIS</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps_home">Map</string>
     <string name="reportedLandslides">REPORTED     LANDSLIDES</string>
+    <string name="write_something">Write Something...</string>
 </resources>

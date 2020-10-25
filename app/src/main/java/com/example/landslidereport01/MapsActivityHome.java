@@ -10,7 +10,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -66,13 +65,13 @@ public class MapsActivityHome extends FragmentActivity implements OnMapReadyCall
             ActivityCompat.requestPermissions(MapsActivityHome.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
 
-        Toast.makeText(MapsActivityHome.this, "Please Wait...", Toast.LENGTH_LONG).show();
+        //Toast.makeText(MapsActivityHome.this, "Please Wait...", Toast.LENGTH_LONG).show();
 
         reff = FirebaseDatabase.getInstance().getReference();
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.child("CASES").getChildren()) {
                     latchk = ds.child("latitude").getValue().toString();
                     lngchk = ds.child("longitude").getValue().toString();
                     mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(latchk), Double.parseDouble(lngchk))).title(ds.child("name").getValue().toString()));

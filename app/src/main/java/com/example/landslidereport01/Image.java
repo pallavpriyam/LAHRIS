@@ -37,15 +37,12 @@ public class Image extends AppCompatActivity {
 
     Button btnch,btnup,btnpro;
     ImageView imageView;
-
     StorageReference storageReference;
     DatabaseReference databaseReference;
-
 
     byte[] biti;
 
     working wor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +98,6 @@ public class Image extends AppCompatActivity {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Choose your profile picture");
 
         builder.setItems(options, new DialogInterface.OnClickListener() {
 
@@ -131,11 +127,18 @@ public class Image extends AppCompatActivity {
             switch (requestCode) {
                 case 0:
                     if (resultCode == RESULT_OK && data != null) {
+
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
-                        imageView.setImageBitmap(selectedImage);
+
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        selectedImage.compress(Bitmap.CompressFormat.WEBP, 100, stream);
+
                         biti = stream.toByteArray();
+
+                        Bitmap bb = BitmapFactory.decodeByteArray(biti,0,biti.length);
+
+                        imageView.setImageBitmap(bb);
+
                     }
 
                     break;
@@ -149,13 +152,17 @@ public class Image extends AppCompatActivity {
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
+
                         Bitmap bitmap = BitmapFactory.decodeStream(is);
 
                         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.WEBP,0,byteArrayOutputStream);
+
                         byte[] byteArray = byteArrayOutputStream.toByteArray();
-                        Bitmap bb = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+
                         biti = byteArray;
+
+                        Bitmap bb = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
                         imageView.setImageBitmap(bb);
                     }
                     break;
@@ -167,8 +174,6 @@ public class Image extends AppCompatActivity {
     public void upload(byte[] bitmap) {
 
         UploadTask uploadTask=storageReference.child(Location.getName()).putBytes(bitmap);
-        databaseReference.child(Location.getName()).setValue(wor);
-
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -177,6 +182,7 @@ public class Image extends AppCompatActivity {
                 btnpro.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        databaseReference.child("CASES").child(Location.getName()).setValue(wor);
                         startActivity(new Intent(Image.this,MapsActivity.class));
                     }
                 });
@@ -185,7 +191,6 @@ public class Image extends AppCompatActivity {
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(Image.this,"UPLOADING....",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
