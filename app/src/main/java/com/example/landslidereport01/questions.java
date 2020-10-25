@@ -26,7 +26,7 @@ import com.google.android.gms.tasks.Task;
 
 public class questions extends AppCompatActivity {
 
-    CardView c1,c2,c3,c4,c5;
+    CardView c1,c2,c3,c4,c5,c6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,8 @@ public class questions extends AppCompatActivity {
         c3=findViewById(R.id.web);
         c4=findViewById(R.id.team);
         c5=findViewById(R.id.review);
+        c6=findViewById(R.id.route);
+
 
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +77,14 @@ public class questions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(questions.this, Review.class));
+            }
+        });
+
+
+        c6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(questions.this, route.class));
             }
         });
 
