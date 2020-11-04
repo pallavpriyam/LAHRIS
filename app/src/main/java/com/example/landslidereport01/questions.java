@@ -42,6 +42,8 @@ public class questions extends AppCompatActivity {
         c6=findViewById(R.id.route);
 
 
+
+
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -52,7 +52,7 @@ public class Image extends AppCompatActivity {
         imageView=findViewById(R.id.imageview);
         btnup=findViewById(R.id.btnupload);
         btnpro=findViewById(R.id.proceed);
-        btnpro.setEnabled(false);
+        btnpro.setVisibility(View.INVISIBLE);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -66,6 +66,7 @@ public class Image extends AppCompatActivity {
         wor.setLongitude(Location.getLon());
         wor.setLatitude(Location.getLat());
         wor.setName(Location.getName());
+        wor.setCity(Location.getCity());
 
         if (ContextCompat.checkSelfPermission(Image.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED)
             ActivityCompat.requestPermissions(Image.this, new String[] {Manifest.permission.CAMERA}, 1);
@@ -178,7 +179,7 @@ public class Image extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(Image.this,"FILE UPLOADED",Toast.LENGTH_SHORT).show();
-                btnpro.setEnabled(true);
+                btnpro.setVisibility(View.VISIBLE);
                 btnpro.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

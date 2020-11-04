@@ -9,9 +9,17 @@ public class working {
     private String movement;
     private String transport;
     private String land;
+    private String city;
 
 
     public working() {
+    }
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getName() {

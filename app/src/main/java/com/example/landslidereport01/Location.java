@@ -44,6 +44,7 @@ public class Location extends AppCompatActivity {
 
     Button btn1, btn2;
     TextView tv;
+    static String area;
     static Double latitude, longitude;
     static String str2;
     DatabaseReference databaseReference;
@@ -231,7 +232,7 @@ public class Location extends AppCompatActivity {
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude,longitude,1);
             String address = addresses.get(0).getAddressLine(0);
-            String area = addresses.get(0).getLocality();
+            area = addresses.get(0).getLocality();
             String full=address+" "+area;
             tv.setText(full);
 
@@ -252,5 +253,7 @@ public class Location extends AppCompatActivity {
     public static String getName() {
         return str2;
     }
+
+    public static String getCity(){ return area;}
 
 }
